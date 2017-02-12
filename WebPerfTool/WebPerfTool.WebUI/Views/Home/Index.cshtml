@@ -1,0 +1,51 @@
+﻿@model WebPerfTool.Domain.Entities.LinkStat
+
+@{
+    ViewBag.Title = "WebPerformance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @Styles.Render("~/Content/css")
+}
+<div class="header">
+    <div class="navbar">
+
+        <ul>
+            <li><a class="active" href="@Url.Action("Index", "Home")">Home</a></li>
+            <li><a href="@Url.Action("About", "About")">About</a></li>
+        </ul>
+
+    </div>
+</div>
+<body>
+    <div class="main">
+        <p>Enter a URL to test the load time of that page:</p>
+
+
+        @using (Html.BeginForm("SendRequest", "Home"))
+        {
+            <div id="divLoading" style="margin: 0px; padding: 0px; position: fixed; right: 0px;
+    top: 0px; width: 100%; height: 100%; background-color: #666666; z-index: 30001;
+    opacity: 1; filter: alpha(opacity=90);display:none">
+                <div class="load">
+                    Loading, please wait...
+                    <img src="../../Content/themes/base/images/ajax-loading.gif">
+                </div>
+            </div>
+            
+            <input type="submit" value="Test" onclick="JavascriptFunction();" /> 
+            @Html.EditorFor(x => x.Url)
+            <script type="text/javascript" language="javascript">
+                function JavascriptFunction() {
+    
+                    $("#divLoading").show();
+                    $.post(url, null,
+                            function (data) {
+                                $("#PID")[0].innerHTML = data;
+                                $("#divLoading").hide();
+                            });
+                }
+            </script>
+        }
+       
+
+        </div>
+</body>

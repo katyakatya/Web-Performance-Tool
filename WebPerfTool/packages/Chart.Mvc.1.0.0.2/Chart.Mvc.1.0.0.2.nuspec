@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Chart.Mvc</id>
+    <version>1.0.0.2</version>
+    <title>Chart.Mvc</title>
+    <authors>Martino Bordin</authors>
+    <owners>Martino Bordin</owners>
+    <licenseUrl>https://raw.githubusercontent.com/martinobordin/Chart.Mvc/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/martinobordin/Chart.Mvc</projectUrl>
+    <iconUrl>http://www.martinobordin.it/ChartMvc.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A .NET wrapper to generate charts using the popular Chart.Js library (http://www.chartjs.org).</description>
+    <summary>A .NET wrapper to generate charts using the popular Chart.Js library (http://www.chartjs.org).</summary>
+    <releaseNotes>v 1.0.0.2
+ChartConfiguration in each chart is now specialized</releaseNotes>
+    <copyright>Martino Bordin</copyright>
+    <tags>chart chartjs mvc</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Microsoft.AspNet.Mvc" version="5.2.3" />
+        <dependency id="Newtonsoft.Json" version="6.0.8" />
+      </group>
+      <group targetFramework=".NETFramework4.0">
+        <dependency id="Microsoft.AspNet.Mvc" version="4.0.40804.0" />
+        <dependency id="Newtonsoft.Json" version="6.0.8" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

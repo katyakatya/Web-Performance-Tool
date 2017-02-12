@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>CompiledValidators.DataAnnotations</id>
+    <version>1.0</version>
+    <title>CompiledValidators.DataAnnotations</title>
+    <authors>Daniel Moore</authors>
+    <owners>Daniel Moore</owners>
+    <licenseUrl>https://raw.github.com/danielmoore/CompiledValidators/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/danielmoore/CompiledValidators</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>DataAnnotations plugin for CompiledValidators.</description>
+    <summary>DataAnnotations plugin for CompiledValidators.</summary>
+    <copyright>Copyright 2011 Daniel Moore</copyright>
+    <tags>Validation Validator DataAnnotations</tags>
+    <dependencies>
+      <dependency id="CompiledValidators" version="1.0" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Core" targetFramework=".NETFramework4.0" />
+      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework=".NETFramework4.0" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

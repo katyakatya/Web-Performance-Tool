@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+   
+    @RenderBody()
+
+   
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    <div class="footer">
+       
+    </div>
+</body>
+</html>

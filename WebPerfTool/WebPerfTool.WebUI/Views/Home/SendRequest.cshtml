@@ -1,0 +1,152 @@
+﻿@model  WebPerfTool.WebUI.Models.StatsViewModel
+<script src="@Url.Content("~/Scripts/RGraph.common.core.js")"></script>
+<script src="@Url.Content("~/Scripts/RGraph.line.js")"></script>
+@{
+    ViewBag.Title = "Result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <title> </title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 8px;
+        }
+
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        th {
+            background-color: #5CCD00;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="main">
+
+        <a>Time of response:</a>
+
+        <table>
+            <tr>
+                <th><a>Request (times)</a></th>
+                <th><a>Response (seconds)</a></th>
+            </tr>
+
+            @foreach (var item in Model.Last.StatsResults)
+                {
+                    <tr>
+                        <td><a>@item.Key</a></td>
+                        <td><a>@item.Value</a></td>
+                    </tr>
+                }
+        </table>
+
+        <canvas id="cvs" width="620" height="250" style="background-color: #70AD47">
+            [No canvas support]
+        </canvas>
+
+        <script>
+
+            var res = [];
+            var label = [];
+            @{
+                
+                foreach (var item in Model.Last.StatsResults)
+            {
+                @:res.push(@item.Value)
+                @:label.push(@item.Key)
+                        }
+            }
+
+
+            window.onload = function () {
+                var line = new RGraph.Line({
+                    id: 'cvs',
+
+                    data: res,
+
+                    options: {
+                        title: ' chart with testing results',
+                        titleColor: 'white',
+                        backgroundColor: '#70AD47',
+                        backgroundGrid: false,
+                        colors: ['white'],
+                        tickmarks: null,
+                        noyaxis: true,
+                        textColor: 'white',
+                        gutterLeft: 60,
+                        gutterBottom: 70,
+                        noxicks: true,
+                        axisColor: '#ddd',
+                        numxticks: 0,
+                        textSize: 8,
+                        textAngle: 45,
+                        labels: label
+
+                    }
+                }).on('draw', function (obj) {
+                    var grad,
+                        coords = obj.coords[i],
+                        y2 = obj.canvas.height - obj.get('gutterBottom'),
+                        co = obj.context;
+
+
+                    for (var i = 0; i < obj.coords.length; ++i) {
+
+                        grad = RGraph.LinearGradient(
+                            obj,
+                            coords[0], coords[1], coords[0], y2,
+                            'white', 'rgba(255,255,255,0)'
+                        );
+
+                        co.strokeStyle = grad;
+
+                        RGraph.path2(
+                            co,
+                            'b m % % l % % s',
+                            coords[0], coords[1],
+                            coords[0], y2
+                        );
+                    }
+
+                }).draw();
+            };
+        </script>
+
+
+        <div class="button">
+            @using (Html.BeginForm("Index", "Home"))
+            {
+
+                <input type="submit" value="Try again" style="padding: 5px 10px" />
+            }
+        </div>
+
+        <p>Top Slowest Pages</p>
+        <table>
+            <tr>
+                <th><a>URL</a></th>
+                <th><a>Average response time</a></th>
+            </tr>
+
+            @foreach (var m in Model.Stats)
+            {
+                <tr>
+                    <td><a>@m.Url</a></td>
+                    <td><a>@m.AverageResponseTime</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
