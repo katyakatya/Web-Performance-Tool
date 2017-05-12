@@ -16,7 +16,7 @@ namespace WebPerfTool.Domain.Entities
         public  Dictionary<int, double> StatsResults  {get; set;}
         public LinkStat()
         {
-            StatsResults = new Dictionary<int, double>();
+            StatsResults = new Dictionary<int, double>(); // stats collection
         }
         
     }
